@@ -1,0 +1,107 @@
+#login-btn,
+#register-btn {
+  width: 100px;
+}
+
+#tdHash {
+  word-wrap: break-word;
+  max-width: 400px;
+  white-space: normal;
+}
+
+#list {
+  display: flex;
+  flex-direction: row;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.action-icon:nth-child(1) {
+  margin-right: 10px;
+}
+
+.action-icon {
+  color: black;
+}
+
+.action-icon:hover {
+  color: blue;
+}
+
+.input-icons i {
+  position: absolute;
+}
+
+.input-icons {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.icon {
+  padding: 10px;
+  min-width: 40px;
+  margin-top: 2px;
+  cursor: pointer;
+  text-align: center;
+}
+
+#togglePassword {
+  margin-left: 9px;
+  margin-top: 2px;
+  position: absolute;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+}
+
+#list {
+  display: flex;
+  flex-direction: row;
+}
+
+.icon-register {
+  margin-top: 2px;
+}
+
+#emailHelp,
+#passHelp,
+#namaHelp {
+  display: none;
+}
+
+#formDelete button {
+  outline: none !important;
+  box-shadow: none;
+}
+
+#formDelete button {
+  outline: none;
+  box-shadow: none;
+}
+
+/* #tdAction {
+  display: flex;
+  justify-content: center;
+} */
+
+@media only screen and (max-width: 600px) {
+  #tdhash {
+    display: none;
+  }
+  #thpass {
+    display: none;
+  }
+
+  #emailHelp,
+  #passHelp,
+  #namaHelp {
+    display: none;
+    width: 95vw;
+    margin-left: 2.5vw;
+  }
+}
