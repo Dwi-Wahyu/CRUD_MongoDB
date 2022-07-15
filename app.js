@@ -7,6 +7,7 @@ const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const methodOverride = require("method-override");
 const session = require("express-session");
+const port = process.env.PORT || 8080;
 
 dbConnect();
 
@@ -50,4 +51,6 @@ app.post("/api/register", register);
 app.post("/api/update/:id", update);
 app.post("/api/login", login);
 
-app.listen(8080);
+app.listen(port, () => {
+  console.log(`Terhubung pada ${port}`);
+});
