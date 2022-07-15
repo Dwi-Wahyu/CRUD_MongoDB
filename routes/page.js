@@ -10,15 +10,7 @@ const homeAuth = (req, res, next) => {
   }
 };
 
-const loginAuth = (req, res, next) => {
-  if (req.session.user) {
-    res.redirect("/home");
-  } else {
-    next();
-  }
-};
-
-router.get("/", loginAuth, (req, res) => {
+router.get("/", (req, res) => {
   res.sendFile("login.html", { root: "./public/views" });
 });
 
