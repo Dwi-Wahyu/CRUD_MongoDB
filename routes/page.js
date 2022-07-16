@@ -12,7 +12,7 @@ const homeAuth = (req, res, next) => {
 
 const loginAuth = (req, res, next) => {
   if (req.session.isAuthenticated) {
-    res.redirect("/");
+    res.redirect("/home");
   } else {
     next();
   }
