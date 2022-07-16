@@ -3,18 +3,26 @@ const router = express.Router();
 const model = require("../utils/model");
 
 const homeAuth = (req, res, next) => {
-  if (req.session.user) {
+  if (req.session.isAuthenticated) {
     next();
   } else {
     res.redirect("/");
   }
 };
 
-router.get("/", (req, res) => {
+const loginAuth = (req, res, next) => {
+  if (req.session.isAuthenticated) {
+    res.redirect("/");
+  } else {
+    next();
+  }
+};
+
+router.get("/", loginAuth, (req, res) => {
   res.sendFile("login.html", { root: "./public/views" });
 });
 
-router.get("/register", (req, res) => {
+router.get("/register", loginAuth, (req, res) => {
   res.sendFile("register.html", { root: "./public/views" });
 });
 

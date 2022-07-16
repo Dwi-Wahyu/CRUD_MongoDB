@@ -7,9 +7,19 @@ const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const methodOverride = require("method-override");
 const session = require("express-session");
+const MongodbStore = require("connect-mongodb-session")(session);
 const port = process.env.PORT || 8080;
 
 dbConnect();
+
+// MongoDB Atlas Cloud url
+const url = `mongodb+srv://${process.env.dbUsername}:${process.env.dbPassword}@cluster0.jpu1d.mongodb.net/${process.env.dbName}?retryWrites=true&w=majority`;
+
+// MongoDB session store
+const store = new MongodbStore({
+  uri: url,
+  collection: "Session",
+});
 
 // Controllers route
 const register = require("./controllers/register");
@@ -34,7 +44,8 @@ app.use(
   session({
     secret: process.env.secret,
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: true,
+    store: store,
     cookie: { maxAge: 1000 * 60 * 60 * 24 },
   })
 );

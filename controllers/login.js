@@ -17,7 +17,7 @@ const login = async (req, res) => {
           .status(300)
           .json({ status: "error", message: "Password anda salah" });
       } else {
-        req.session.user = result;
+        req.session.isAuthenticated = true;
         res.status(200).json({ status: "success", message: "Berhasil login" });
       }
     }
