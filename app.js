@@ -33,7 +33,7 @@ app.set("view engine", "ejs");
 app.set("views", "./public/views");
 
 // Middleware
-app.use(morgan("tiny"));
+// app.use(morgan("tiny"));
 app.use(bodyParser.json());
 app.use(methodOverride("_method"));
 app.use(
@@ -60,7 +60,7 @@ app.use("/img", express.static("public/img"));
 // Route for CRUD operation
 app.get("/api/delete/:email", remove);
 app.post("/api/register", register);
-app.post("/api/update/:id", update);
+app.post("/api/update/:email", update);
 app.post("/api/login", login);
 
 app.listen(port, () => {

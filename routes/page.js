@@ -32,8 +32,8 @@ router.get("/home", homeAuth, (req, res) => {
   });
 });
 
-router.get("/update/:id", (req, res) => {
-  model.findOne({ _id: req.params.id }).then((result) => {
+router.get("/update/:email", (req, res) => {
+  model.findOne({ email: req.params.email }).then((result) => {
     res.render("update", { user: result });
   });
 });
