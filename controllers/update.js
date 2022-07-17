@@ -7,7 +7,13 @@ const update = async (req, res) => {
   const validation = await bcrypt.compare(password, data.hashedPassword);
   const hashedPassword = await bcrypt.hash(password, 8);
 
-  if (email === data.email && nama === data.nama) {
+  if (
+    nama === data.nama &&
+    email === data.email &&
+    password === data.password
+  ) {
+    res.redirect("/home");
+  } else if (email === data.email && nama === data.nama) {
     db.updateOne(
       { email: req.params.email },
       {
@@ -25,6 +31,20 @@ const update = async (req, res) => {
       {
         nama: nama,
         email: email,
+      },
+      (err) => {
+        if (err) throw err;
+        res.redirect("/home");
+      }
+    );
+  } else {
+    db.updateOne(
+      { email: req.params.email },
+      {
+        nama: nama,
+        email: email,
+        password: password,
+        hashedPassword: hashedPassword,
       },
       (err) => {
         if (err) throw err;
