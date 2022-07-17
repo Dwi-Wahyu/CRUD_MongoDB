@@ -13,7 +13,6 @@ const port = process.env.PORT || 8080;
 dbConnect();
 
 // MongoDB Atlas Cloud url
-// const url = `mongodb+srv://${process.env.dbUsername}:${process.env.dbPassword}@cluster0.jpu1d.mongodb.net/${process.env.dbName}?retryWrites=true&w=majority`;
 const url = process.env.MONGODB_URI;
 
 // MongoDB session store
@@ -33,7 +32,7 @@ app.set("view engine", "ejs");
 app.set("views", "./public/views");
 
 // Middleware
-// app.use(morgan("tiny"));
+app.use(morgan("tiny"));
 app.use(bodyParser.json());
 app.use(methodOverride("_method"));
 app.use(
