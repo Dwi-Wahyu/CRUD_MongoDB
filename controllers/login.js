@@ -19,6 +19,7 @@ const login = async (req, res) => {
       } else {
         req.session.isAuthenticated = true;
         req.session.user = email;
+        console.log("Ada user masuk dengan ip address " + req.ip);
         res.status(200).json({ status: "success", message: "Berhasil login" });
       }
     }
